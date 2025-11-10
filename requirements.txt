@@ -5,5 +5,5 @@ mux_python>=5.0.0,<6.0.0
 # JWT for signed playback URLs
 PyJWT>=2.8.0,<3.0.0
 
-# Cryptography for secure token generation
-cryptography>=41.0.0,<43.0.0
+# Cryptography for secure token generation (Frappe v16 requires 45.x)
+cryptography>=45.0.0,<46.0.0
