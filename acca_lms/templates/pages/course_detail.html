@@ -1,0 +1,208 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ course.title }} - ACCA LMS{% endblock %}
+
+{% block page_content %}
+
+<!-- Include Header -->
+{% include "templates/includes/header.html" %}
+
+<!-- Course Header -->
+<section class="course-header">
+	<div class="container">
+		<nav class="breadcrumb">
+			<a href="/">Home</a> / <a href="/courses">Courses</a> / <span>{{ course.title }}</span>
+		</nav>
+
+		<div class="course-header-content">
+			<div class="course-info">
+				<h1>{{ course.title }}</h1>
+
+				{% if course.short_introduction %}
+				<p class="course-intro">{{ course.short_introduction }}</p>
+				{% endif %}
+
+				<div class="course-meta">
+					{% if course.level %}
+					<span class="meta-badge">{{ course.level }}</span>
+					{% endif %}
+
+					<span class="meta-item">
+						<i class="fa fa-video"></i> {{ total_lessons }} Lessons
+					</span>
+
+					<span class="meta-item">
+						<i class="fa fa-clock"></i> {{ formatted_duration }}
+					</span>
+				</div>
+			</div>
+
+			<div class="course-sidebar">
+				{% if course.image %}
+				<img src="{{ course.image }}" alt="{{ course.title }}" class="course-image">
+				{% endif %}
+
+				<!-- Enrollment CTA -->
+				<div class="enrollment-cta">
+					{% if show_login_prompt %}
+						<a href="/login?redirect-to=/courses/{{ course.name }}" class="btn btn-primary btn-lg btn-block">
+							<i class="fa fa-sign-in"></i> Sign In to Enroll
+						</a>
+					{% elif is_enrolled %}
+						<a href="/courses/{{ course.name }}/learn" class="btn btn-success btn-lg btn-block">
+							<i class="fa fa-play-circle"></i> Continue Learning
+						</a>
+					{% elif enrollment_requested %}
+						{% if request_status == "Pending" %}
+							<button class="btn btn-warning btn-lg btn-block" disabled>
+								<i class="fa fa-clock"></i> Enrollment Pending
+							</button>
+							<p class="text-muted small text-center" style="margin-top: 10px;">
+								Your request is awaiting approval
+							</p>
+						{% elif request_status == "Approved" %}
+							<button class="btn btn-success btn-lg btn-block" disabled>
+								<i class="fa fa-check"></i> Enrollment Approved
+							</button>
+							<p class="text-muted small text-center" style="margin-top: 10px;">
+								Refresh page to start learning
+							</p>
+						{% endif %}
+					{% else %}
+						<button class="btn btn-primary btn-lg btn-block" onclick="requestEnrollment()">
+							<i class="fa fa-user-plus"></i> Request Enrollment
+						</button>
+						<p class="text-muted small text-center" style="margin-top: 10px;">
+							Admin approval required
+						</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Course Content -->
+<section class="course-content">
+	<div class="container">
+		<!-- Tabs -->
+		<ul class="nav nav-tabs course-tabs" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" data-toggle="tab" href="#curriculum" role="tab">
+					Curriculum
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#about" role="tab">
+					About
+				</a>
+			</li>
+		</ul>
+
+		<!-- Tab Content -->
+		<div class="tab-content">
+			<!-- Curriculum Tab -->
+			<div class="tab-pane fade show active" id="curriculum" role="tabpanel">
+				{% if chapters %}
+					<div class="course-outline">
+						{% for chapter in chapters %}
+						<div class="chapter-card">
+							<div class="chapter-header" onclick="toggleChapter(this)">
+								<h3>
+									<i class="fa fa-chevron-right"></i>
+									{{ chapter.title }}
+								</h3>
+								<span class="chapter-meta">
+									{{ chapter.lesson_count }} lessons
+									{% if chapter.total_duration > 0 %}
+										• {{ (chapter.total_duration / 60) | int }} min
+									{% endif %}
+								</span>
+							</div>
+
+							<div class="chapter-content">
+								{% if chapter.description %}
+								<p class="chapter-description">{{ chapter.description }}</p>
+								{% endif %}
+
+								<ul class="lesson-list">
+									{% for lesson in chapter.lessons %}
+									<li class="lesson-item">
+										<i class="fa fa-{{ 'play-circle' if lesson.content_type == 'Video' else 'file-alt' }}"></i>
+										<span class="lesson-title">{{ lesson.title }}</span>
+
+										{% if lesson.include_in_preview %}
+										<span class="badge badge-success">Preview</span>
+										{% endif %}
+
+										{% if lesson.duration %}
+										<span class="lesson-duration">
+											{{ (lesson.duration / 60) | int }} min
+										</span>
+										{% endif %}
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				{% else %}
+					<p class="text-muted">Course curriculum will be available soon.</p>
+				{% endif %}
+			</div>
+
+			<!-- About Tab -->
+			<div class="tab-pane fade" id="about" role="tabpanel">
+				<div class="course-description">
+					{% if course.description %}
+						{{ course.description }}
+					{% else %}
+						<p>{{ course.short_introduction or "No description available." }}</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Include Footer -->
+{% include "templates/includes/footer.html" %}
+
+<script>
+function toggleChapter(header) {
+	const content = header.nextElementSibling;
+	const icon = header.querySelector('i');
+
+	content.classList.toggle('active');
+	icon.classList.toggle('fa-chevron-right');
+	icon.classList.toggle('fa-chevron-down');
+}
+
+function requestEnrollment() {
+	frappe.call({
+		method: 'acca_lms.api.enrollment.request_enrollment',
+		args: {
+			course: '{{ course.name }}'
+		},
+		callback: function(r) {
+			if (r.message && r.message.success) {
+				frappe.show_alert({
+					message: r.message.message,
+					indicator: 'green'
+				}, 5);
+				setTimeout(function() {
+					location.reload();
+				}, 2000);
+			} else {
+				frappe.show_alert({
+					message: r.message.message || 'Failed to submit request',
+					indicator: 'red'
+				}, 5);
+			}
+		}
+	});
+}
+</script>
+
+{% endblock %}

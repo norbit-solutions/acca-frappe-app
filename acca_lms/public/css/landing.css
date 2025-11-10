@@ -1,0 +1,393 @@
+/* ACCA LMS Landing Page Styles */
+/* Copyright (c) 2025, NorBit Solutions */
+
+/* ============================================================================
+   CSS VARIABLES
+   ============================================================================ */
+
+:root {
+	--primary-color: #667eea;
+	--secondary-color: #764ba2;
+	--success-color: #10b981;
+	--danger-color: #ef4444;
+	--warning-color: #f59e0b;
+	--info-color: #3b82f6;
+
+	--text-color: #2d3748;
+	--text-muted: #718096;
+	--text-light: #a0aec0;
+
+	--bg-light: #f7fafc;
+	--bg-white: #ffffff;
+
+	--border-color: #e2e8f0;
+	--border-radius: 12px;
+
+	--shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+	--shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+	--shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+
+	--transition: all 0.3s ease;
+}
+
+/* ============================================================================
+   GLOBAL STYLES
+   ============================================================================ */
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	color: var(--text-color);
+	line-height: 1.6;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+/* ============================================================================
+   GRADIENT BACKGROUND
+   ============================================================================ */
+
+.gradient-bg {
+	background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+/* ============================================================================
+   HERO SECTION
+   ============================================================================ */
+
+.hero-section {
+	background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+	color: white;
+	padding: 5rem 0 4rem;
+	text-align: center;
+}
+
+.hero-content {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.hero-title {
+	font-size: 3rem;
+	font-weight: 800;
+	margin-bottom: 1.5rem;
+	line-height: 1.2;
+}
+
+.hero-subtitle {
+	font-size: 1.25rem;
+	margin-bottom: 2rem;
+	opacity: 0.95;
+	line-height: 1.6;
+}
+
+.hero-buttons {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	margin-bottom: 3rem;
+}
+
+.hero-buttons .btn {
+	padding: 0.875rem 2rem;
+	font-size: 1.1rem;
+	border-radius: 8px;
+}
+
+.btn-outline-light {
+	border: 2px solid white;
+	background: transparent;
+	color: white;
+}
+
+.btn-outline-light:hover {
+	background: white;
+	color: var(--primary-color);
+}
+
+/* Hero Stats */
+.hero-stats {
+	display: flex;
+	justify-content: center;
+	gap: 3rem;
+	margin-top: 3rem;
+}
+
+.stat-item {
+	text-align: center;
+}
+
+.stat-number {
+	font-size: 2.5rem;
+	font-weight: 800;
+	display: block;
+	margin-bottom: 0.25rem;
+}
+
+.stat-label {
+	font-size: 0.95rem;
+	opacity: 0.9;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+/* ============================================================================
+   SECTIONS
+   ============================================================================ */
+
+.featured-section,
+.browse-section,
+.how-it-works {
+	padding: 4rem 0;
+}
+
+.section-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	text-align: center;
+	margin-bottom: 3rem;
+	color: var(--text-color);
+}
+
+/* ============================================================================
+   COURSE GRID
+   ============================================================================ */
+
+.course-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 2rem;
+	margin-top: 2rem;
+}
+
+/* ============================================================================
+   HOW IT WORKS
+   ============================================================================ */
+
+.how-it-works {
+	background: var(--bg-light);
+}
+
+.steps-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 2rem;
+	margin-top: 2rem;
+}
+
+.step-card {
+	background: white;
+	padding: 2rem;
+	border-radius: var(--border-radius);
+	text-align: center;
+	transition: var(--transition);
+	box-shadow: var(--shadow-sm);
+}
+
+.step-card:hover {
+	transform: translateY(-5px);
+	box-shadow: var(--shadow-lg);
+}
+
+.step-icon {
+	color: var(--primary-color);
+	margin-bottom: 1.5rem;
+}
+
+.step-card h3 {
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+	color: var(--text-color);
+}
+
+.step-card p {
+	color: var(--text-muted);
+	line-height: 1.6;
+}
+
+/* ============================================================================
+   CTA SECTION
+   ============================================================================ */
+
+.cta-section {
+	background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+	color: white;
+	padding: 4rem 0;
+	text-align: center;
+}
+
+.cta-content h2 {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-bottom: 1rem;
+}
+
+.cta-content p {
+	font-size: 1.25rem;
+	margin-bottom: 2rem;
+	opacity: 0.95;
+}
+
+.cta-content .btn {
+	padding: 1rem 3rem;
+	font-size: 1.2rem;
+	border-radius: 8px;
+}
+
+/* ============================================================================
+   BUTTONS
+   ============================================================================ */
+
+.btn {
+	display: inline-block;
+	padding: 0.625rem 1.5rem;
+	border-radius: 6px;
+	text-decoration: none;
+	transition: var(--transition);
+	font-weight: 600;
+	text-align: center;
+	border: none;
+	cursor: pointer;
+}
+
+.btn-primary {
+	background: var(--primary-color);
+	color: white;
+}
+
+.btn-primary:hover {
+	background: var(--secondary-color);
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-md);
+}
+
+.btn-success {
+	background: var(--success-color);
+	color: white;
+}
+
+.btn-warning {
+	background: var(--warning-color);
+	color: white;
+}
+
+.btn-danger {
+	background: var(--danger-color);
+	color: white;
+}
+
+.btn-light {
+	background: white;
+	color: var(--primary-color);
+}
+
+.btn-light:hover {
+	background: #f7fafc;
+}
+
+.btn-lg {
+	padding: 1rem 2rem;
+	font-size: 1.1rem;
+}
+
+.btn-sm {
+	padding: 0.5rem 1rem;
+	font-size: 0.9rem;
+}
+
+.btn-block {
+	display: block;
+	width: 100%;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 768px) {
+	.hero-title {
+		font-size: 2rem;
+	}
+
+	.hero-subtitle {
+		font-size: 1rem;
+	}
+
+	.hero-buttons {
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.hero-stats {
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.section-title {
+		font-size: 2rem;
+	}
+
+	.course-grid {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	.steps-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.cta-content h2 {
+		font-size: 1.75rem;
+	}
+
+	.cta-content p {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.hero-section {
+		padding: 3rem 0 2rem;
+	}
+
+	.hero-title {
+		font-size: 1.75rem;
+	}
+
+	.stat-number {
+		font-size: 2rem;
+	}
+
+	.featured-section,
+	.browse-section,
+	.how-it-works {
+		padding: 2rem 0;
+	}
+}
+
+/* ============================================================================
+   UTILITIES
+   ============================================================================ */
+
+.text-center {
+	text-align: center;
+}
+
+.text-muted {
+	color: var(--text-muted);
+}
+
+.mt-2 {
+	margin-top: 1rem;
+}
+
+.mb-2 {
+	margin-bottom: 1rem;
+}
+
+.p-2 {
+	padding: 1rem;
+}

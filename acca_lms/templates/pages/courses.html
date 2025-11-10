@@ -1,0 +1,95 @@
+{% extends "templates/web.html" %}
+
+{% block title %}Browse Courses - ACCA LMS{% endblock %}
+
+{% block page_content %}
+
+<!-- Include Header -->
+{% include "templates/includes/header.html" %}
+
+<!-- Page Header -->
+<section class="page-header">
+	<div class="container">
+		<nav class="breadcrumb">
+			<a href="/">Home</a> / <span>Courses</span>
+		</nav>
+		<h1>Browse All Courses</h1>
+		<p>Explore our complete catalog of {{ total_courses }} professional video courses</p>
+	</div>
+</section>
+
+<!-- Course Listing -->
+<section class="course-listing">
+	<div class="container">
+		{% if courses %}
+			<div class="course-grid">
+				{% for course in courses %}
+					{% include "templates/includes/course_card.html" %}
+				{% endfor %}
+			</div>
+		{% else %}
+			<div class="empty-state">
+				<i class="fa fa-book fa-4x"></i>
+				<h3>No Courses Available</h3>
+				<p>Check back later for new courses!</p>
+			</div>
+		{% endif %}
+	</div>
+</section>
+
+<!-- Include Footer -->
+{% include "templates/includes/footer.html" %}
+
+<style>
+.page-header {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	padding: 3rem 0 2rem;
+	margin-bottom: 3rem;
+}
+
+.breadcrumb {
+	color: rgba(255,255,255,0.8);
+	margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+	color: white;
+	text-decoration: none;
+}
+
+.breadcrumb a:hover {
+	text-decoration: underline;
+}
+
+.page-header h1 {
+	font-size: 2.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.page-header p {
+	font-size: 1.1rem;
+	opacity: 0.9;
+}
+
+.course-listing {
+	padding: 2rem 0 4rem;
+}
+
+.empty-state {
+	text-align: center;
+	padding: 4rem 2rem;
+	color: #a0aec0;
+}
+
+.empty-state i {
+	margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+	color: #4a5568;
+	margin-bottom: 0.5rem;
+}
+</style>
+
+{% endblock %}

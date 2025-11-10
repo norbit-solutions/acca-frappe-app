@@ -1,0 +1,185 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2025-11-10 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "lesson",
+  "lesson_title",
+  "user",
+  "user_name",
+  "column_break_5",
+  "view_date",
+  "view_status",
+  "view_completed",
+  "viewing_details_section",
+  "duration_watched",
+  "current_position",
+  "completion_percent",
+  "column_break_11",
+  "total_duration",
+  "device_details_section",
+  "ip_address",
+  "device_info"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "VVL-.#####",
+   "default": "VVL-.#####"
+  },
+  {
+   "fieldname": "lesson",
+   "fieldtype": "Link",
+   "label": "Lesson",
+   "options": "Course Lesson",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "lesson_title",
+   "fieldtype": "Data",
+   "label": "Lesson Title",
+   "fetch_from": "lesson.title",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "user_name",
+   "fieldtype": "Data",
+   "label": "User Name",
+   "fetch_from": "user.full_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "view_date",
+   "fieldtype": "Datetime",
+   "label": "View Date",
+   "reqd": 1,
+   "default": "Now",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "view_status",
+   "fieldtype": "Select",
+   "label": "View Status",
+   "options": "Started\nIn Progress\nCompleted\nAbandoned",
+   "default": "Started",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "view_completed",
+   "fieldtype": "Check",
+   "label": "View Completed",
+   "default": "0"
+  },
+  {
+   "fieldname": "viewing_details_section",
+   "fieldtype": "Section Break",
+   "label": "Viewing Details"
+  },
+  {
+   "fieldname": "duration_watched",
+   "fieldtype": "Float",
+   "label": "Duration Watched (seconds)",
+   "precision": "2",
+   "description": "Total time spent watching this video"
+  },
+  {
+   "fieldname": "current_position",
+   "fieldtype": "Float",
+   "label": "Current Position (seconds)",
+   "precision": "2",
+   "description": "Last playback position"
+  },
+  {
+   "fieldname": "completion_percent",
+   "fieldtype": "Percent",
+   "label": "Completion Percent",
+   "precision": "2",
+   "description": "Percentage of video watched"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_duration",
+   "fieldtype": "Float",
+   "label": "Total Video Duration",
+   "fetch_from": "lesson.duration",
+   "read_only": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "device_details_section",
+   "fieldtype": "Section Break",
+   "label": "Device Details",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "ip_address",
+   "fieldtype": "Data",
+   "label": "IP Address"
+  },
+  {
+   "fieldname": "device_info",
+   "fieldtype": "Text",
+   "label": "Device Info",
+   "description": "User agent string"
+  }
+ ],
+ "links": [],
+ "modified": "2025-11-10 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "ACCA LMS",
+ "name": "Video View Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Instructor",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

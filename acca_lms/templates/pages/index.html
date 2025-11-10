@@ -1,0 +1,136 @@
+{% extends "templates/web.html" %}
+
+{% block title %}ACCA LMS - Secure Video Learning Platform{% endblock %}
+
+{% block page_content %}
+
+<!-- Include Header -->
+{% include "templates/includes/header.html" %}
+
+<!-- Hero Section -->
+<section class="hero-section">
+	<div class="container">
+		<div class="hero-content">
+			<h1 class="hero-title">Master Your Skills with Professional Video Courses</h1>
+			<p class="hero-subtitle">
+				Secure, high-quality video learning platform designed for serious learners.
+				Get access to expert-led courses with lifetime access.
+			</p>
+			<div class="hero-buttons">
+				<a href="/courses" class="btn btn-primary btn-lg">Browse Courses</a>
+				{% if frappe.session.user == "Guest" %}
+				<a href="/login#signup" class="btn btn-outline-light btn-lg">Get Started</a>
+				{% else %}
+				<a href="/app" class="btn btn-outline-light btn-lg">Go to Dashboard</a>
+				{% endif %}
+			</div>
+
+			<!-- Stats -->
+			<div class="hero-stats">
+				<div class="stat-item">
+					<div class="stat-number">{{ stats.total_courses }}</div>
+					<div class="stat-label">Courses</div>
+				</div>
+				<div class="stat-item">
+					<div class="stat-number">{{ stats.total_students }}</div>
+					<div class="stat-label">Students</div>
+				</div>
+				<div class="stat-item">
+					<div class="stat-number">{{ stats.total_lessons }}</div>
+					<div class="stat-label">Video Lessons</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Featured Courses -->
+{% if featured_courses %}
+<section class="featured-section">
+	<div class="container">
+		<h2 class="section-title">Featured Courses</h2>
+		<div class="course-grid">
+			{% for course in featured_courses %}
+				{% include "templates/includes/course_card.html" %}
+			{% endfor %}
+		</div>
+	</div>
+</section>
+{% endif %}
+
+<!-- How It Works -->
+<section class="how-it-works">
+	<div class="container">
+		<h2 class="section-title">How It Works</h2>
+		<div class="steps-grid">
+			<div class="step-card">
+				<div class="step-icon">
+					<i class="fa fa-search fa-3x"></i>
+				</div>
+				<h3>1. Browse Courses</h3>
+				<p>Explore our catalog of professional video courses across various topics.</p>
+			</div>
+
+			<div class="step-card">
+				<div class="step-icon">
+					<i class="fa fa-user-plus fa-3x"></i>
+				</div>
+				<h3>2. Request Enrollment</h3>
+				<p>Sign up and request access to courses. Our team will review and approve.</p>
+			</div>
+
+			<div class="step-card">
+				<div class="step-icon">
+					<i class="fa fa-play-circle fa-3x"></i>
+				</div>
+				<h3>3. Start Learning</h3>
+				<p>Watch high-quality, secure video lessons at your own pace.</p>
+			</div>
+
+			<div class="step-card">
+				<div class="step-icon">
+					<i class="fa fa-certificate fa-3x"></i>
+				</div>
+				<h3>4. Track Progress</h3>
+				<p>Monitor your learning progress and complete courses to achieve your goals.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Browse All Courses -->
+{% if all_courses %}
+<section class="browse-section">
+	<div class="container">
+		<h2 class="section-title">Browse All Courses</h2>
+		<div class="course-grid">
+			{% for course in all_courses %}
+				{% include "templates/includes/course_card.html" %}
+			{% endfor %}
+		</div>
+		<div class="text-center" style="margin-top: 2rem;">
+			<a href="/courses" class="btn btn-primary btn-lg">View All Courses</a>
+		</div>
+	</div>
+</section>
+{% endif %}
+
+<!-- CTA Section -->
+<section class="cta-section">
+	<div class="container">
+		<div class="cta-content">
+			<h2>Ready to Start Learning?</h2>
+			<p>Join thousands of students already learning on ACCA LMS</p>
+			{% if frappe.session.user == "Guest" %}
+			<a href="/login#signup" class="btn btn-light btn-lg">Sign Up Now</a>
+			{% else %}
+			<a href="/courses" class="btn btn-light btn-lg">Explore Courses</a>
+			{% endif %}
+		</div>
+	</div>
+</section>
+
+<!-- Include Footer -->
+{% include "templates/includes/footer.html" %}
+
+{% endblock %}

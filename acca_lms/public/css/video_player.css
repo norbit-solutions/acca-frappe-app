@@ -1,0 +1,330 @@
+/* ACCA LMS Secure Video Player Styles */
+/* Copyright (c) 2025, NorBit Solutions */
+
+/* ============================================================================
+   VIDEO WRAPPER
+   ============================================================================ */
+
+.secure-video-wrapper {
+	position: relative;
+	width: 100%;
+	background: #000;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.secure-video-wrapper mux-player {
+	width: 100%;
+	max-width: 100%;
+	display: block;
+}
+
+/* ============================================================================
+   VIDEO WATERMARK
+   ============================================================================ */
+
+.video-watermark {
+	position: absolute;
+	color: rgba(255, 255, 255, 0.4);
+	font-size: 14px;
+	font-weight: 700;
+	pointer-events: none;
+	z-index: 1000;
+	transition: all 1s ease;
+	text-shadow:
+		1px 1px 2px rgba(0, 0, 0, 0.8),
+		-1px -1px 2px rgba(0, 0, 0, 0.8),
+		1px -1px 2px rgba(0, 0, 0, 0.8),
+		-1px 1px 2px rgba(0, 0, 0, 0.8);
+	padding: 5px 10px;
+	background: rgba(0, 0, 0, 0.3);
+	border-radius: 4px;
+	backdrop-filter: blur(2px);
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+/* ============================================================================
+   VIDEO ERROR STATE
+   ============================================================================ */
+
+.video-error {
+	text-align: center;
+	padding: 4rem 2rem;
+	color: #a0aec0;
+	background: #2d3748;
+	border-radius: 12px;
+	min-height: 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.video-error i {
+	display: block;
+	margin-bottom: 1.5rem;
+	color: #ef4444;
+}
+
+.video-error p {
+	font-size: 1.1rem;
+	color: #cbd5e0;
+	margin: 0;
+}
+
+/* ============================================================================
+   VIDEO CONTAINER
+   ============================================================================ */
+
+.video-container {
+	position: relative;
+	margin-bottom: 2rem;
+}
+
+.video-header {
+	background: white;
+	padding: 1.5rem;
+	border-radius: 12px 12px 0 0;
+	border-bottom: 1px solid #e2e8f0;
+}
+
+.video-header h2 {
+	margin: 0 0 0.5rem 0;
+	color: #2d3748;
+	font-size: 1.5rem;
+}
+
+.video-meta {
+	display: flex;
+	gap: 1.5rem;
+	color: #718096;
+	font-size: 0.9rem;
+}
+
+.video-meta span {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* ============================================================================
+   VIDEO CONTROLS OVERLAY
+   ============================================================================ */
+
+.video-controls-info {
+	background: white;
+	padding: 1rem 1.5rem;
+	border-radius: 0 0 12px 12px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.view-limit-info {
+	color: #718096;
+	font-size: 0.9rem;
+}
+
+.view-limit-info.warning {
+	color: #f59e0b;
+	font-weight: 600;
+}
+
+.view-limit-info.danger {
+	color: #ef4444;
+	font-weight: 600;
+}
+
+/* ============================================================================
+   LOADING STATE
+   ============================================================================ */
+
+.video-loading {
+	text-align: center;
+	padding: 4rem 2rem;
+	background: #f7fafc;
+	border-radius: 12px;
+	min-height: 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.video-loading .spinner {
+	width: 50px;
+	height: 50px;
+	border: 4px solid #e2e8f0;
+	border-top-color: #667eea;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	margin-bottom: 1rem;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.video-loading p {
+	color: #718096;
+	font-size: 1.1rem;
+}
+
+/* ============================================================================
+   SECURITY FEATURES
+   ============================================================================ */
+
+/* Prevent text selection on video controls */
+.secure-video-wrapper * {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+/* Prevent dragging */
+.secure-video-wrapper mux-player {
+	-webkit-user-drag: none;
+	-khtml-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+	user-drag: none;
+}
+
+/* ============================================================================
+   VIDEO PROGRESS INDICATOR
+   ============================================================================ */
+
+.video-progress-bar {
+	background: #e2e8f0;
+	height: 4px;
+	border-radius: 2px;
+	overflow: hidden;
+	margin-top: 1rem;
+}
+
+.video-progress-fill {
+	background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+	height: 100%;
+	transition: width 0.3s ease;
+}
+
+/* ============================================================================
+   VIDEO STATISTICS
+   ============================================================================ */
+
+.video-stats {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.stat-box {
+	background: #f7fafc;
+	padding: 1rem;
+	border-radius: 8px;
+	text-align: center;
+}
+
+.stat-box .stat-value {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #667eea;
+	display: block;
+	margin-bottom: 0.25rem;
+}
+
+.stat-box .stat-label {
+	font-size: 0.85rem;
+	color: #718096;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 768px) {
+	.video-header {
+		padding: 1rem;
+	}
+
+	.video-header h2 {
+		font-size: 1.25rem;
+	}
+
+	.video-meta {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.video-controls-info {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.video-watermark {
+		font-size: 12px;
+		padding: 3px 6px;
+	}
+}
+
+@media (max-width: 480px) {
+	.video-header h2 {
+		font-size: 1.1rem;
+	}
+
+	.video-error {
+		padding: 2rem 1rem;
+		min-height: 200px;
+	}
+
+	.video-error i {
+		font-size: 2rem !important;
+	}
+
+	.video-watermark {
+		font-size: 10px;
+		padding: 2px 4px;
+	}
+}
+
+/* ============================================================================
+   ACCESSIBILITY
+   ============================================================================ */
+
+/* Focus states for keyboard navigation */
+.secure-video-wrapper:focus-within {
+	outline: 2px solid #667eea;
+	outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+	.video-watermark {
+		color: rgba(255, 255, 255, 0.9);
+		background: rgba(0, 0, 0, 0.8);
+	}
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+	.video-watermark {
+		transition: none;
+	}
+
+	.video-loading .spinner {
+		animation: none;
+		border-top-color: #667eea;
+	}
+}

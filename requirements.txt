@@ -1,0 +1,9 @@
+# Python dependencies for ACCA LMS
+# Mux SDK for video hosting and streaming
+mux_python==0.19.0
+
+# JWT for signed playback URLs
+PyJWT==2.8.0
+
+# Cryptography for secure token generation
+cryptography==41.0.7

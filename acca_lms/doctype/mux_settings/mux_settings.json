@@ -1,0 +1,158 @@
+{
+ "actions": [],
+ "creation": "2025-11-10 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "mux_credentials_section",
+  "mux_token_id",
+  "mux_token_secret",
+  "mux_signing_key_id",
+  "mux_signing_key_private",
+  "security_features_section",
+  "enable_watermark",
+  "watermark_logo",
+  "column_break_watermark",
+  "watermark_text_template",
+  "usage_limits_section",
+  "enable_usage_limits",
+  "max_views_per_video",
+  "column_break_usage",
+  "min_completion_percent",
+  "single_device_section",
+  "enable_single_device_login",
+  "logout_message"
+ ],
+ "fields": [
+  {
+   "fieldname": "mux_credentials_section",
+   "fieldtype": "Section Break",
+   "label": "Mux API Credentials"
+  },
+  {
+   "fieldname": "mux_token_id",
+   "fieldtype": "Data",
+   "label": "Mux Token ID",
+   "description": "Your Mux API Access Token ID"
+  },
+  {
+   "fieldname": "mux_token_secret",
+   "fieldtype": "Password",
+   "label": "Mux Token Secret",
+   "description": "Your Mux API Access Token Secret"
+  },
+  {
+   "fieldname": "mux_signing_key_id",
+   "fieldtype": "Data",
+   "label": "Mux Signing Key ID",
+   "description": "Signing key ID for signed playback URLs"
+  },
+  {
+   "fieldname": "mux_signing_key_private",
+   "fieldtype": "Password",
+   "label": "Mux Signing Private Key",
+   "description": "Base64-encoded RSA private key for JWT token signing"
+  },
+  {
+   "fieldname": "security_features_section",
+   "fieldtype": "Section Break",
+   "label": "Security Features"
+  },
+  {
+   "fieldname": "enable_watermark",
+   "fieldtype": "Check",
+   "label": "Enable Dynamic Watermark",
+   "default": "1",
+   "description": "Show user ID and timestamp overlay on videos"
+  },
+  {
+   "fieldname": "watermark_logo",
+   "fieldtype": "Attach Image",
+   "label": "Watermark Logo",
+   "description": "Optional logo to display in watermark"
+  },
+  {
+   "fieldname": "column_break_watermark",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "watermark_text_template",
+   "fieldtype": "Small Text",
+   "label": "Watermark Text Template",
+   "default": "{user_mobile}",
+   "description": "Template for watermark text. Use {user_mobile}, {user_id}, {user_name}"
+  },
+  {
+   "fieldname": "usage_limits_section",
+   "fieldtype": "Section Break",
+   "label": "Usage Limits"
+  },
+  {
+   "fieldname": "enable_usage_limits",
+   "fieldtype": "Check",
+   "label": "Enable View Limits",
+   "default": "1",
+   "description": "Limit number of times a user can view a video"
+  },
+  {
+   "fieldname": "max_views_per_video",
+   "fieldtype": "Int",
+   "label": "Max Views Per Video",
+   "default": "2",
+   "description": "Maximum number of completed views allowed per user per video"
+  },
+  {
+   "fieldname": "column_break_usage",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "min_completion_percent",
+   "fieldtype": "Int",
+   "label": "Minimum Completion Percent",
+   "default": "80",
+   "description": "Percentage of video that must be watched to count as a completed view"
+  },
+  {
+   "fieldname": "single_device_section",
+   "fieldtype": "Section Break",
+   "label": "Single Device Login"
+  },
+  {
+   "fieldname": "enable_single_device_login",
+   "fieldtype": "Check",
+   "label": "Enable Single Device Login",
+   "default": "1",
+   "description": "Force logout from other devices when user logs in"
+  },
+  {
+   "fieldname": "logout_message",
+   "fieldtype": "Small Text",
+   "label": "Logout Message",
+   "default": "You have been logged out because you logged in from another device.",
+   "description": "Message shown to users when logged out from another device"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-11-10 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "ACCA LMS",
+ "name": "Mux Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

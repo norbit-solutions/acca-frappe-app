@@ -1,0 +1,350 @@
+/* ACCA LMS Course Detail Page Styles */
+/* Copyright (c) 2025, NorBit Solutions */
+
+/* ============================================================================
+   COURSE HEADER
+   ============================================================================ */
+
+.course-header {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	padding: 2rem 0 3rem;
+}
+
+.course-header-content {
+	display: grid;
+	grid-template-columns: 1fr 350px;
+	gap: 3rem;
+	margin-top: 2rem;
+}
+
+.course-info h1 {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-bottom: 1rem;
+	line-height: 1.2;
+}
+
+.course-intro {
+	font-size: 1.1rem;
+	margin-bottom: 1.5rem;
+	opacity: 0.95;
+	line-height: 1.6;
+}
+
+.course-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	align-items: center;
+}
+
+.meta-badge {
+	background: rgba(255,255,255,0.2);
+	padding: 0.5rem 1rem;
+	border-radius: 20px;
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+
+.meta-item {
+	font-size: 0.95rem;
+	opacity: 0.9;
+}
+
+.meta-item i {
+	margin-right: 0.5rem;
+}
+
+/* ============================================================================
+   COURSE SIDEBAR
+   ============================================================================ */
+
+.course-sidebar {
+	background: white;
+	border-radius: 12px;
+	padding: 1.5rem;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.course-image {
+	width: 100%;
+	border-radius: 8px;
+	margin-bottom: 1.5rem;
+}
+
+.enrollment-cta {
+	margin-top: 1rem;
+}
+
+.enrollment-cta .btn {
+	margin-bottom: 0.5rem;
+}
+
+/* ============================================================================
+   COURSE CONTENT
+   ============================================================================ */
+
+.course-content {
+	padding: 3rem 0;
+	background: #f7fafc;
+}
+
+/* Tabs */
+.course-tabs {
+	border-bottom: 2px solid #e2e8f0;
+	margin-bottom: 2rem;
+	display: flex;
+	gap: 0;
+}
+
+.course-tabs .nav-item {
+	list-style: none;
+}
+
+.course-tabs .nav-link {
+	padding: 1rem 2rem;
+	color: #718096;
+	text-decoration: none;
+	border-bottom: 3px solid transparent;
+	transition: all 0.3s;
+	display: block;
+	font-weight: 600;
+}
+
+.course-tabs .nav-link:hover {
+	color: #667eea;
+}
+
+.course-tabs .nav-link.active {
+	color: #667eea;
+	border-bottom-color: #667eea;
+}
+
+/* Tab Content */
+.tab-content {
+	background: white;
+	padding: 2rem;
+	border-radius: 12px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.tab-pane {
+	display: none;
+}
+
+.tab-pane.show.active {
+	display: block;
+}
+
+/* ============================================================================
+   COURSE OUTLINE
+   ============================================================================ */
+
+.course-outline {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.chapter-card {
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	overflow: hidden;
+	background: white;
+}
+
+.chapter-header {
+	background: #f7fafc;
+	padding: 1.25rem 1.5rem;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: background 0.3s;
+}
+
+.chapter-header:hover {
+	background: #edf2f7;
+}
+
+.chapter-header h3 {
+	margin: 0;
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: #2d3748;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.chapter-header i {
+	font-size: 0.9rem;
+	color: #667eea;
+	transition: transform 0.3s;
+}
+
+.chapter-meta {
+	color: #718096;
+	font-size: 0.9rem;
+}
+
+.chapter-content {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease;
+}
+
+.chapter-content.active {
+	max-height: 1000px;
+}
+
+.chapter-description {
+	padding: 1rem 1.5rem;
+	color: #718096;
+	border-bottom: 1px solid #e2e8f0;
+}
+
+/* Lesson List */
+.lesson-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.lesson-item {
+	padding: 1rem 1.5rem;
+	border-bottom: 1px solid #e2e8f0;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.lesson-item:last-child {
+	border-bottom: none;
+}
+
+.lesson-item i {
+	color: #667eea;
+	font-size: 1.1rem;
+}
+
+.lesson-title {
+	flex: 1;
+	color: #2d3748;
+	font-weight: 500;
+}
+
+.lesson-duration {
+	color: #a0aec0;
+	font-size: 0.9rem;
+}
+
+.badge {
+	padding: 0.25rem 0.75rem;
+	border-radius: 12px;
+	font-size: 0.8rem;
+	font-weight: 600;
+}
+
+.badge-success {
+	background: #d1fae5;
+	color: #065f46;
+}
+
+/* ============================================================================
+   COURSE DESCRIPTION
+   ============================================================================ */
+
+.course-description {
+	line-height: 1.8;
+	color: #2d3748;
+}
+
+.course-description h2 {
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	color: #2d3748;
+}
+
+.course-description p {
+	margin-bottom: 1rem;
+}
+
+.course-description ul,
+.course-description ol {
+	margin-bottom: 1rem;
+	padding-left: 2rem;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 992px) {
+	.course-header-content {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+
+	.course-sidebar {
+		max-width: 400px;
+		margin: 0 auto;
+	}
+}
+
+@media (max-width: 768px) {
+	.course-info h1 {
+		font-size: 2rem;
+	}
+
+	.course-meta {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.75rem;
+	}
+
+	.course-tabs .nav-link {
+		padding: 0.75rem 1.5rem;
+	}
+
+	.tab-content {
+		padding: 1.5rem;
+	}
+
+	.chapter-header {
+		padding: 1rem;
+	}
+
+	.chapter-header h3 {
+		font-size: 1.1rem;
+	}
+
+	.lesson-item {
+		padding: 0.75rem 1rem;
+		flex-wrap: wrap;
+	}
+
+	.lesson-duration {
+		width: 100%;
+		margin-left: 2rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.course-header {
+		padding: 1.5rem 0 2rem;
+	}
+
+	.course-info h1 {
+		font-size: 1.5rem;
+	}
+
+	.course-intro {
+		font-size: 1rem;
+	}
+
+	.chapter-header h3 {
+		font-size: 1rem;
+	}
+}

@@ -1,0 +1,124 @@
+<nav class="acca-navbar">
+	<div class="container">
+		<div class="navbar-content">
+			<a href="/" class="navbar-brand">
+				<img src="/assets/acca_lms/images/logo.svg" alt="ACCA LMS" class="navbar-logo">
+				<span class="brand-text">ACCA LMS</span>
+			</a>
+
+			<div class="navbar-menu">
+				<a href="/" class="nav-link">Home</a>
+				<a href="/courses" class="nav-link">Courses</a>
+
+				{% if frappe.session.user == "Guest" %}
+					<a href="/login" class="nav-link">Login</a>
+					<a href="/login#signup" class="btn btn-primary btn-sm">Sign Up</a>
+				{% else %}
+					<a href="/app" class="nav-link">Dashboard</a>
+					<a href="/logout" class="nav-link">Logout</a>
+				{% endif %}
+			</div>
+
+			<!-- Mobile menu toggle -->
+			<button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+	</div>
+</nav>
+
+<style>
+.acca-navbar {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	padding: 1rem 0;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navbar-brand {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: white;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.navbar-logo {
+	height: 40px;
+	margin-right: 10px;
+}
+
+.brand-text {
+	color: white;
+}
+
+.navbar-menu {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.nav-link {
+	color: white;
+	text-decoration: none;
+	transition: opacity 0.3s;
+}
+
+.nav-link:hover {
+	opacity: 0.8;
+	color: white;
+}
+
+.mobile-menu-toggle {
+	display: none;
+	flex-direction: column;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 5px;
+}
+
+.mobile-menu-toggle span {
+	width: 25px;
+	height: 3px;
+	background: white;
+	margin: 3px 0;
+	border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+	.navbar-menu {
+		display: none;
+		position: absolute;
+		top: 70px;
+		left: 0;
+		right: 0;
+		background: #667eea;
+		flex-direction: column;
+		padding: 1rem;
+		box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+	}
+
+	.navbar-menu.active {
+		display: flex;
+	}
+
+	.mobile-menu-toggle {
+		display: flex;
+	}
+}
+</style>
+
+<script>
+function toggleMobileMenu() {
+	document.querySelector('.navbar-menu').classList.toggle('active');
+}
+</script>
