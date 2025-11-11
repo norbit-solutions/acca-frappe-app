@@ -27,9 +27,10 @@ app_include_js = [
     "/assets/acca_lms/js/secure_video_player.js"
 ]
 
-# Include Mux Player from CDN
+# Include Mux Player from CDN and enrollment handling
 web_include_js = [
-    "https://cdn.jsdelivr.net/npm/@mux/mux-player"
+    "https://cdn.jsdelivr.net/npm/@mux/mux-player",
+    "/assets/acca_lms/js/enrollment.js"
 ]
 
 # Include CSS for web pages
@@ -87,6 +88,13 @@ web_include_css = [
 # override_doctype_class = {
 # 	"ToDo": "custom_app.overrides.CustomToDo"
 # }
+
+# DocType JavaScript
+# ------------------
+# Custom JavaScript for specific doctypes
+doctype_js = {
+    "Course Lesson": "public/js/course_lesson.js"
+}
 
 # Document Events
 # ---------------
