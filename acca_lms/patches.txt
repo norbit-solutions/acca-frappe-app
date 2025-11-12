@@ -1,0 +1,2 @@
+# Patches for ACCA LMS
+# Format: module_name.path.to.patch.file
